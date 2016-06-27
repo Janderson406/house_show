@@ -37,3 +37,4 @@ gem 'devise'
 gem 'whenever', :require => false
 gem 'redcarpet'
 gem 'will_paginate-bootstrap'
+gem 'cancancan'
