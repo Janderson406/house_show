@@ -1,11 +1,18 @@
-<h2>Sign up</h2>
+<!-- <h2>Sign up</h2> -->
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+  <!-- insert radio buttons for  artist || host role?  -->
+
+  <div class ="well">
+    <label class="radio-inline"><input type="radio" name="optradio">I am an artist looking to book my own events.</label><br>
+    <label class="radio-inline"><input type="radio" name="optradio">I am a home/small venue owner looking to host events.</label>
+  </div>
+
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email %>
   </div>
 
   <div class="field">
@@ -25,7 +32,7 @@
 
   <div class="field">
     <%= f.label :bio %><br />
-    <%= f.text_area(:bio, rows: 15, data: {provide: "markdown"})%>
+    <%= f.text_area(:bio, rows: 10, data: {provide: "markdown"})%>
   </div>
 
   <div class="field">
@@ -39,11 +46,11 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  </div><br>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+    <%= f.submit "Sign up", class: 'btn btn-primary' %>
+  </div><br>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<!-- <%= render "devise/shared/links" %> -->
