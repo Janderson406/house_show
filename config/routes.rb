@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   match "about" => 'welcome#about', via: :get
   root 'welcome#index'
 
