@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+
+  devise_for :users
+
+  get 'users/profile'
+  resources :users, only: [:index, :show] do
+    #resources :events, only: [:create, :destroy]?
+  end
+
+  match "about" => 'welcome#about', via: :get
+  root 'welcome#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
