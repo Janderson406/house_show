@@ -38,5 +38,6 @@ gem 'whenever', :require => false
 gem 'redcarpet'
 gem 'will_paginate-bootstrap'
 gem 'cancancan'
-gem 'carrierwave'
+gem 'paperclip'
+gem 'aws-sdk-v1'
 gem 'gsdk'

@@ -2,6 +2,7 @@
 <div class= "well">
   <h5><%= current_user.first_name %> <%= current_user.last_name %></h5><br>
     <div>
+      <%= image_tag current_user.avatar.url(:medium,)%><br><br>
       <ul>
         <li>contact: <%= current_user.email %></li>
         <li>phone:   <%=current_user.phone%></li>
