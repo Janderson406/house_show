@@ -19,16 +19,20 @@
         <!-- define user role and Link to either: Find Host or Find Artist -->
       <% end %>
 
-        <div class="pull-right">
-          <% if user_signed_in? %>
-             <strong><%= link_to current_user.first_name, users_profile_path %></strong>
+      <div class="pull-right icon">
+        <% if user_signed_in? %>
+          <%= image_tag current_user.avatar.url(:micro), class:"img-circle"%>
+      </div>
+        <div class="pull-right icon">
+          <strong><%= link_to current_user.first_name, users_profile_path %></strong>
              <li class ="micro-nav">  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> </li>
-          <% else %>
-            <%= link_to "Sign In", new_user_session_path %>
-          <% end %>
+        <% else %>
+          <%= link_to "Sign In", new_user_session_path %>
+        <% end %>
         </div>
     </ul>
-      </br>
+    </br>
+    
       <div class="flash">
         <% if flash.now[:notice] %>
           <div class="alert alert-success">
