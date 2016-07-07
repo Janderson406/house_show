@@ -38,5 +38,5 @@ end
 
 puts "Seeding Finished"
 puts "#{User.count} users created"
-puts "#{Category.count} items created"
-puts "#{Event.count} items created"
+puts "#{Category.count} categories created"
+puts "#{Event.count} events created"
