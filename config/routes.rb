@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
   get 'users/profile'
   resources :users, only: [:index, :show] do
-    #resources :events, only: [:create, :destroy]?
+    resources :events#, only: [:create, :destroy]
   end
+
+  resources :events #, only: [:index, :show]
 
   match "about" => 'welcome#about', via: :get
   root 'welcome#index'

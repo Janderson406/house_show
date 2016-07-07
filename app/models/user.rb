@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  enum role: [:host, :artist, :admin]
+
+  has_many :events      
+
   # This method associates the attribute ":avatar" with a file attachment
   has_attached_file :avatar, styles: { medium: "300x300>", micro: '35x35#', thumb: "100x100#" }, default_url: "/images/:style/missing.png"
   # Validate the attached image is image/jpg, image/png, etc
