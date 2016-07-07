@@ -1,5 +1,9 @@
 <h1>All Events</h1>
 
+<% Category.all.each do |category| %>
+  <%= link_to category.name, events_path(category: category.name) %>
+<%end%>
+
 <% @events.each do |event|%>
   <h4><%= link_to event.title, event %></h4>
   <%= event.date.to_datetime.strftime('%a %b %d %Y') %><br><br>

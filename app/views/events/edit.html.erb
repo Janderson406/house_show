@@ -13,10 +13,12 @@
   <%= f.label :description %>
   <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: "Enter event description" %>
 
-  <%= f.label :ticket_link %>
-  <%= f.url_field :ticket_link, class: 'form-control', placeholder: "http://" %>
+  <%= f.label :ticket_link %>  <!--if status :accepted-->
+  <%= f.url_field :ticket_link, class: 'form-control', placeholder: "http://" %><br>
 
-  <%= f.label :category %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, prompt: "Choose an event category"%><br><br>
+
+  <%= f.label "Or assign a new category" %>
   <%= f.text_field :category, class: 'form-control' %>
 
     <div class="form-group">

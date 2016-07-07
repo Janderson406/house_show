@@ -1,14 +1,14 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
-	def index
-		# if params[:category].blank?
+  def index
+		 if params[:category].blank?
         #for event status :accepted ONLY
       @events = Event.all.order("created_at DESC")
-		# else
-			# @category_id = Category.find_by(name: params[:category]).id
-			# @events = Event.where(category_id: @category_id).order("created_at DESC")
-		# end
+		 else
+			 @category_id = Category.find_by(name: params[:category]).id
+			 @events = Event.where(category_id: @category_id).order("created_at DESC")
+		 end
 	end
 
 	def show
