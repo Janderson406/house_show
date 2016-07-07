@@ -1,0 +1,9 @@
+<h1>All Categories</h1>
+
+
+  <% @categories.each do |category| %>
+    <%= link_to category.name, events_path(category: category.name), {class: "label label-default"}%>
+  <%end%>
+  <br>
+  <br>
+  <%= link_to "Back to All Events", events_path, class: 'btn btn-info' %>

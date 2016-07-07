@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users
 
   get 'users/profile'
@@ -7,6 +6,7 @@ Rails.application.routes.draw do
     resources :events#, only: [:create, :destroy]
   end
 
+  resources :categories, only: [:index, :new, :create, :show]
   resources :events #, only: [:index, :show]
 
   match "about" => 'welcome#about', via: :get

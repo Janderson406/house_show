@@ -1,13 +1,20 @@
 <h1>All Events</h1>
 
-<% Category.all.each do |category| %>
-  <%= link_to category.name, events_path(category: category.name) %>
+<% if @categories.count > 5 %>
+  <% @categories.last(5).each do |category| %>
+    <%= link_to category.name, events_path(category: category.name), {class: "label label-default"}%>
+  <%end%>
+    <%= link_to "See all categories", categories_path, {class: "label label-warning"}%>
+<%else%>
+  <% @categories.each do |category| %>
+    <%= link_to category.name, events_path(category: category.name), {class: "label label-default"}%>
+  <%end%>
 <%end%>
 
 <% @events.each do |event|%>
   <h4><%= link_to event.title, event %></h4>
   <%= event.date.to_datetime.strftime('%a %b %d %Y') %><br><br>
-  <%= event.description %>
+  <%= raw truncate(event.description, :length => 100 ) %>
 <%end%>
 <br><br>
 
