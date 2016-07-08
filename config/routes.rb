@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  get 'users/profile'
+  get 'users/account'
   resources :users, only: [:index, :show] do
     resources :events#, only: [:create, :destroy]
   end

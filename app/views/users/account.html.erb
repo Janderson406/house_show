@@ -1,0 +1,15 @@
+<div class="col-xs-6">
+  <h2>Your Account Settings</h2><br>
+
+      <div>
+        <%= image_tag current_user.avatar.url(:medium), class:"img-circle"%><br><br>
+        <h4><%= current_user.first_name %> <%= current_user.last_name %></h4><br>
+        <ul class="list-group">
+          <li class="list-group-item">contact: <%= current_user.email %></li>
+          <li class="list-group-item">phone:   <%=current_user.phone%></li>
+          <li class="list-group-item">address:</li>
+        </ul>
+      </div>
+
+    <%= link_to 'Edit account settings', edit_user_registration_path, class: 'btn btn-warning'%>
+</div>
