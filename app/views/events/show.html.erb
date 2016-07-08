@@ -1,9 +1,11 @@
 <h4><%= @event.title %></h4>
 <%= @event.date.to_datetime.strftime('%a %b %d %Y') %><br><br>
+  Filed under: <p class= "label label-default"><%= @event.category.name%></p><br><br>
   <%= @event.description %><br><br>
       <%= @event.ticket_link %><br><br>
-        <%= @event.category %><br><br>
 
-  <%= link_to "Back", root_path, class: "btn btn-sm btn-default" %>
-	<%= link_to "Edit", edit_event_path, class: "btn btn-sm btn-default" %>
-	<%= link_to "Delete", event_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-default" %>
+
+  <%= link_to "Back", events_path, class: "btn btn-sm btn-info" %>
+  <!-- If authorized -->
+	<%= link_to "Edit", edit_event_path, class: "btn btn-sm btn-warning" %>
+	<%= link_to "Delete", event_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>

@@ -21,7 +21,6 @@ group :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'web-console', '~> 2.0'
-  gem 'faker'
   gem 'shoulda-matchers', require: false
   gem 'database_cleaner'
 end
@@ -40,4 +39,5 @@ gem 'will_paginate-bootstrap'
 gem 'cancancan'
 gem 'paperclip'
 gem 'aws-sdk-v1'
+gem 'faker'
 gem 'gsdk'

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     #@events = @user.events
   end
 
-  def profile
+  def account
     @user = current_user
   end
 

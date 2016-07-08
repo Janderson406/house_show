@@ -1,14 +1,27 @@
-<h1>All Events</h1>
 
-<% Category.all.each do |category| %>
-  <%= link_to category.name, events_path(category: category.name) %>
+<div class="col-xs-6">
+  <h1>Events</h1>
+<% if @categories.count > 50 %>
+  <% @categories.last(50).each do |category| %>
+    <%= link_to category.name, events_path(category: category.name), {class: "label label-default"}%>
+  <%end%>
+    <%= link_to "See all categories", categories_path, {class: "label label-warning"}%>
+<%else%>
+  <% @categories.each do |category| %>
+    <%= link_to category.name, events_path(category: category.name), {class: "label label-default"}%>
+  <%end%>
 <%end%>
+<br><br>
+<%= link_to "Create new event", new_event_path, class: 'btn btn-success' %>
+</div>
+<div class="col-xs-6">
 
 <% @events.each do |event|%>
   <h4><%= link_to event.title, event %></h4>
-  <%= event.date.to_datetime.strftime('%a %b %d %Y') %><br><br>
-  <%= event.description %>
+  <%= event.date.to_datetime.strftime('%a %b %d %Y') %> &nbsp <p class="label label-default"><%= event.category.name%></p><br><br>
+  <%= raw truncate(event.description, :length => 100 ) %>
 <%end%>
 <br><br>
 
-<%= link_to "Create new event", new_event_path, class: 'btn btn-success' %>
+
+</div>

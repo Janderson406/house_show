@@ -2,23 +2,27 @@
 
   <%= f.label :Selected_host_info_and_avatar_here %><br><br>
 
+  <%= f.label :Event_category %>
+  <%= f.collection_select :category_id, @categories, :id, :name, {prompt: "Select a category"}, {class: "form-control"} %>
+
+  <div>
+    <p class= "small">
+      Not finding what you're looking for? <%= link_to "Create a new category", new_category_path%><br>
+    </p>
+  </div>
 
   <%= f.label :date %>
-  <%= f.date_field :date, class: 'form-control' %>
+  <%= f.date_field :date, class: 'form-control' %><br>
 
   <%= f.label :title %>
-  <%= f.text_field :title, class: 'form-control', placeholder: "Enter event title" %>
+  <%= f.text_field :title, class: 'form-control', placeholder: "Enter event title" %><br>
 
   <%= f.label :description %>
-  <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: "Enter event description" %>
+  <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: "Enter event description" %><br>
 
   <%= f.label :ticket_link %>  <!--if status :accepted-->
   <%= f.url_field :ticket_link, class: 'form-control', placeholder: "http://" %><br>
 
-  <%= f.collection_select :category_id, Category.all, :id, :name, prompt: "Choose an event category"%><br><br>
-
-  <%= f.label "Or assign a new category" %>
-  <%= f.text_field :category, class: 'form-control' %>
 
     <div class="form-group">
          <%= f.submit "Save", class: 'btn btn-success' %>

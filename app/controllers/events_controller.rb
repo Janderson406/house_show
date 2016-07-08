@@ -9,6 +9,8 @@ class EventsController < ApplicationController
 			 @category_id = Category.find_by(name: params[:category]).id
 			 @events = Event.where(category_id: @category_id).order("created_at DESC")
 		 end
+     @categories = Category.all
+     
 	end
 
 	def show
@@ -18,6 +20,7 @@ class EventsController < ApplicationController
 	def new
     #if user role :artist or :admin
 		@event = Event.new
+    @categories = Category.all
 	end
 
 	def create
@@ -33,6 +36,7 @@ class EventsController < ApplicationController
 
 	def edit
     @event = Event.find(params[:id])
+    @categories = Category.all
 	end
 
 	def update
