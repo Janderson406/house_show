@@ -10,6 +10,7 @@ class EventsController < ApplicationController
 			 @events = Event.where(category_id: @category_id).order("created_at DESC")
 		 end
      @categories = Category.all
+     
 	end
 
 	def show

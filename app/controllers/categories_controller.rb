@@ -20,6 +20,8 @@ class CategoriesController < ApplicationController
     end
   end
 
+
+
   def show
   end
 
