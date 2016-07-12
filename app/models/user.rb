@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   enum role: [:host, :artist, :admin]
 
   has_many :events
-  has_one :address     
+  has_one :address
+  has_one :profile
 
   # This method associates the attribute ":avatar" with a file attachment
   has_attached_file :avatar, styles: { medium: "300x300>", micro: '35x35#', thumb: "100x100#" }, default_url: "/images/:style/missing.png"
