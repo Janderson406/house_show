@@ -7,12 +7,14 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
-    @profile.user = current_user
+    @user = User.find(params[:id])
+
   end
 
   def new
     @profile = Profile.new
     @profile.user = current_user
+
   end
 
   def create
@@ -32,7 +34,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
-    if @profile.update(profiles_params)
+    if @profile.update(profile_params)
       flash[:notice] = "Profile listing was updated."
 			redirect_to @profile
 		else
@@ -43,7 +45,7 @@ class ProfilesController < ApplicationController
 
   private
 
-  def profiles_params
+  def profile_params
     params.require(:profile).permit(:bio, :link, :user_id, :photo)
   end
 end
