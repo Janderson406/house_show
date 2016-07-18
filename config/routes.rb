@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
 
-  get 'users/account'
-  resources :users, only: [:index, :show] do
-    resources :events#, only: [:create, :destroy]
+  get 'users/my_profile'
+  resources :users do  #, only: [:index, :show]
+    #resources :events#, only: [:create, :destroy]
     resources :addresses, except: [:destory]
     resources :profiles, except: [:destroy]
   end

@@ -30,6 +30,28 @@
     <%= f.text_field :phone%>
   </div>
 
+  <%= f.fields_for :address do |a| %>
+    <div class="field">
+      <%= a.label :street %><br />
+      <%= a.text_field :street %>
+    </div>
+
+    <div class="field">
+      <%= a.label :city %><br />
+      <%= a.text_field :city %>
+    </div>
+
+    <div class="field">
+      <%= a.label :state %><br />
+      <%= a.text_field :state %>
+    </div>
+
+    <div class="field">
+      <%= a.label :zip_code %><br />
+      <%= a.text_field :zip %>
+    </div>
+ <% end %>
+
   <div class="field">
       <%= f.label :avatar %><br />
       <%= f.file_field :avatar %>
@@ -53,4 +75,4 @@
   </div><br>
 <% end %>
 
-<!-- <%= render "devise/shared/links" %> -->
+<!--  render "devise/shared/links"  -->

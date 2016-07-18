@@ -1,0 +1,39 @@
+
+<div class="container-fluid well span6">
+  <div class="row-fluid">
+
+
+        <div class="span8">
+            Email: <%= current_user.email %><br>
+            Phone: <%= current_user.phone%><br>
+
+            <br>
+        </div>
+
+        <div class="span2">
+            <div class="btn-group">
+                <%= link_to 'Edit account & password settings', edit_user_registration_path, class: 'btn btn-sm btn-warning'%>
+            </div>
+        </div>
+</div>
+</div>
+
+<h2>Your Public Profile Page:</h2>
+
+
+<%= link_to image_tag current_user.avatar.url(:thumb), class: "img-circle"%>
+<%= link_to current_user.first_name%><br>
+
+Bio:<%= @profile.bio %><br>
+Link: <%= @profile.link %><br>
+<!-- if user Role = host -->
+Pictures:
+<% @photo.each do |p| %>
+ <%= photo.description %>
+ <%= image_tag photo.image.url(:thumb) %>
+<%end%>
+
+<br><br>
+<div class="btn-group">
+    <%= link_to 'Edit Profile Page', edit_profile_path(current_user), class: 'btn btn-sm btn-warning'%>
+</div>
