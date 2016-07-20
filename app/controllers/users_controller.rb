@@ -14,8 +14,8 @@ class UsersController < ApplicationController
     @user = current_user
     @profile = current_user.profile
     @address = current_user.address
-    @photo = @profile.photos
-
+    @photos = @profile.photos
+    #Photo.where(:user_id => current_user)
 
 
   end

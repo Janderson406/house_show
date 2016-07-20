@@ -9,6 +9,8 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
     @user = User.find(params[:id])
+    @photos = @profile.photos.all
+
 
   end
 
@@ -37,7 +39,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     if @profile.update(profile_params)
       flash[:notice] = "Profile listing was updated."
-			redirect_to @profile
+			redirect_to users_my_profile_path
 		else
       flash.now[:alert] = "Unable to update your profile. Please try again."
 			render :edit
