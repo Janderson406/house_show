@@ -28,7 +28,7 @@ Bio:<%= @profile.bio %><br>
 Link: <%= @profile.link %><br>
 <!-- if user Role = host -->
 Pictures:
-<%= @photos.each do |photo| %>
+<% @photos.each do |photo| %>
     <h6><%= photo.description %></h6>
     <%= link_to profile_photo_path(@profile, photo) do %>
       <%= image_tag photo.image.url(:thumb)%><br>
@@ -36,8 +36,4 @@ Pictures:
     <%= time_ago_in_words(photo.created_at) %> ago<br><br>
 <% end %><br>
 
-<br><br>
-<div class="btn-group">
-    <%= link_to 'Edit Profile Page', edit_profile_path(current_user), class: 'btn btn-sm btn-warning'%> &nbsp&nbsp
-    <%= link_to 'Add Venue Photos', new_profile_photo_path(current_user), class: 'btn btn-sm btn-default'%>
-</div>
+<%= link_to 'Edit Profile Page', edit_profile_path(current_user), class: 'btn btn-sm btn-warning'%> &nbsp&nbsp<%= link_to 'Add Venue Photos', new_profile_photo_path(current_user), class: 'btn btn-sm btn-success'%>

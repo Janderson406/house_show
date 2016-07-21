@@ -6,7 +6,7 @@
 <%= @profile.bio %><br>
 <%= @profile.link %><br>
 
-<%= @photos.each do |photo| %>
+<% @photos.each do |photo| %>
     <h6><%= photo.description %></h6>
     <%= link_to profile_photo_path(@profile, photo) do %>
       <%= image_tag photo.image.url(:thumb)%><br>

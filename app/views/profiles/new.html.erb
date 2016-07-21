@@ -6,16 +6,18 @@
   <%= f.text_area :bio, rows: 10%></div>
 
   <div><%= f.label :link %><br />
-  <%= f.text_field :link %></div>
+  <%= f.text_field :link %></div><br>
+
+  <!--if role :host-->
+  Add a photo of your home or venue<br>
 
   <%= f.fields_for :photo do |p| %>
     <div>
-      <%= p.label :image %><br />
       <%= p.file_field :image %>
     </div>
 
     <div>
-      <%= p.label :description %><br />
+      <%= p.label :photo_description %><br />
       <%= p.text_field :description %>
     </div>
   <% end %><br>
