@@ -3,11 +3,14 @@ class ProfilesController < ApplicationController
 
   def index
     @profiles = Profile.all.order("created_at DESC")
+    @user = User.all
   end
 
   def show
     @profile = Profile.find(params[:id])
     @user = User.find(params[:id])
+    @photos = @profile.photos.all
+
 
   end
 
@@ -21,7 +24,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     @profile.user = current_user
     if @profile.save
-      redirect_to @profile, notice: "Profile was saved successfully."
+      redirect_to users_my_profile_path, notice: "Profile was saved successfully."
     else
       flash.now[:alert] = "Error creating profile. Please try again."
     render :new
@@ -36,7 +39,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     if @profile.update(profile_params)
       flash[:notice] = "Profile listing was updated."
-			redirect_to @profile
+			redirect_to users_my_profile_path
 		else
       flash.now[:alert] = "Unable to update your profile. Please try again."
 			render :edit
@@ -46,6 +49,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:bio, :link, :user_id, :photo)
+    params.require(:profile).permit(:bio, :link, :user_id, photos_attributes: [:description, :image])
   end
 end

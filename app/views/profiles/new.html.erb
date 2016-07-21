@@ -1,13 +1,27 @@
+<h4>Hi, <%=current_user.first_name%>. Please set up your public profile</h4>
+
 <%= form_for @profile, url: profiles_path, html: { multipart: true } do |f| %>
 
   <div><%= f.label :bio %><br />
-  <%= f.text_field :bio%></div>
+  <%= f.text_area :bio, rows: 10%></div>
 
   <div><%= f.label :link %><br />
-  <%= f.text_field :link %></div>
+  <%= f.text_field :link %></div><br>
 
-  <div><%= f.label :photo %><br />
-  <%= f.file_field :photo %></div>
+  <!--if role :host-->
+  Add a photo of your home or venue<br>
+
+  <%= f.fields_for :photo do |p| %>
+    <div>
+      <%= p.file_field :image %>
+    </div>
+
+    <div>
+      <%= p.label :photo_description %><br />
+      <%= p.text_field :description %>
+    </div>
+  <% end %><br>
+
 
   <div><%= f.submit "Create Profile"%></div>
 <% end %>

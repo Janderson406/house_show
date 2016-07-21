@@ -10,8 +10,14 @@ class UsersController < ApplicationController
     #@events = @user.events
   end
 
-  def account
+  def my_profile
     @user = current_user
+    @profile = current_user.profile
+    @address = current_user.address
+    @photos = @profile.photos
+    #Photo.where(:user_id => current_user)
+
+
   end
 
 end

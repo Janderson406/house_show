@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708234337) do
+ActiveRecord::Schema.define(version: 20160716184655) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street"
@@ -47,16 +47,25 @@ ActiveRecord::Schema.define(version: 20160708234337) do
 
   add_index "events", ["user_id"], name: "index_events_on_user_id"
 
+  create_table "photos", force: :cascade do |t|
+    t.text     "description"
+    t.integer  "profile_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "photos", ["profile_id"], name: "index_photos_on_profile_id"
+
   create_table "profiles", force: :cascade do |t|
     t.text     "bio"
     t.string   "link"
     t.integer  "user_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
@@ -75,14 +84,12 @@ ActiveRecord::Schema.define(version: 20160708234337) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone"
-    t.text     "bio"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.integer  "role",                   default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

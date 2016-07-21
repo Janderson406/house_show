@@ -4,4 +4,6 @@ class Event < ActiveRecord::Base
   has_one :address
 
   enum status: [:pending, :accepted, :denied]
+
+
 end

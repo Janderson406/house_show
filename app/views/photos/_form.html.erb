@@ -1,0 +1,15 @@
+<%= form_for [@profile,@photo], html: { multipart: true } do |f| %>
+  <div class="field">
+      <%= f.label :image %><br />
+      <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Upload Photo", class: 'btn btn-primary' %>
+  </div><br>
+<%end%>

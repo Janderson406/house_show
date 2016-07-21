@@ -27,7 +27,7 @@
             </ul>
           </li> <!-- index of all Accepted/Published events -->
       <% if user_signed_in? %>
-        <li><%= link_to "My Profile", profile_path(current_user)%></li>
+        <li><%= link_to "My Profile", users_my_profile_path %></li>
         <li><%= link_to "My Events"%></li> <!-- events that belong to Users -->
         <!-- define user role and Link to either: Find Host or Find Artist -->
         <li><%= link_to events_path, class: "btn btn-primary" do %>
@@ -43,7 +43,7 @@
           <%= image_tag current_user.avatar.url(:micro), class:"img-circle"%>
       </div>
         <div class="pull-right icon">
-          <strong><%= link_to current_user.first_name, users_account_path %></strong>
+          <strong><%= link_to current_user.first_name, users_my_profile_path %></strong>
              <li class ="micro-nav">  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> </li>
         <% else %>
           <%= link_to "Sign In", new_user_session_path %>

@@ -1,2 +1,35 @@
-<h1>Profiles#edit</h1>
-<p>Find me in app/views/profiles/edit.html.erb</p>
+<h3>Edit your Profile</h3>
+<%= form_for @profile, url: profiles_path, html: { multipart: true } do |f| %>
+
+  <%= f.label :bio %>
+  <%= f.text_field :bio, class: 'form-control' %><br>
+
+  <%= f.label :link %>
+  <%= f.text_field :link, class: 'form-control' %><br>
+
+  <% if @profile.photos.any?%>
+    <% @photo.each do %>
+      <%= image_tag photo.image.url(:thumb)%>
+      <%= f.fields_for :photo do |p| %>
+        <div>
+          <%= image_tag photo.image.url(:thumb)%>
+          <%= p.file_field :image %>
+        </div>
+
+        <div>
+          <%= p.label :photo_description %><br />
+          <%= p.text_field :description %>
+        </div>
+      <%end%>
+    <%end%>
+  <%else%>
+    There are no photos for this profile.
+  <%end%>
+
+  <br><br>
+  <div class="form-group">
+    <%= f.submit "Update", class: 'btn btn-success' %>
+  </div>
+<% end %>
+
+  <%= link_to "Upload a photo", new_profile_photo_path(@profile)%>
