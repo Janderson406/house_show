@@ -5,24 +5,25 @@ class RegistrationsController < ApplicationController
 
   def create
     @user = User.new(
-      first_name: params[:user_sign_up_form][:first_name],
-      last_name:  params[:user_sign_up_form][:last_name],
-      email:      params[:user_sign_up_form][:email],
-      password:   params[:user_sign_up_form][:password],
-      password_confirmation: params[:user_sign_up_form][:password_confirmation],
-      avatar:     params[:user_sign_up_form][:avatar]
+      first_name: params[:user_signup_form][:first_name],
+      last_name:  params[:user_signup_form][:last_name],
+      email:      params[:user_signup_form][:email],
+      password:   params[:user_signup_form][:password],
+      password_confirmation: params[:user_signup_form][:password_confirmation],
+      avatar:     params[:user_signup_form][:avatar]
     )
     @user.save
 
     address = Address.new(
-      street: params[:user_sign_up_form][:street],
-      city:   params[:user_sign_up_form][:city],
-      state:  params[:user_sign_up_form][:state],
-      zip:    params[:user_sign_up_form][:zip]
+      street: params[:user_signup_form][:street],
+      city:   params[:user_signup_form][:city],
+      state:  params[:user_signup_form][:state],
+      zip:    params[:user_signup_form][:zip]
     )
     address.user = @user
     address.save
-    redirect_to root_path, notice: "Welcome aboard!"
+    sign_in @user
+    redirect_to new_profile_path(current_user), notice: "Welcome aboard! Set up your public profile now."
   end
 
   # def after_sign_up_path_for(resource)
