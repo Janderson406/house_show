@@ -10,6 +10,7 @@ class RegistrationsController < ApplicationController
       email:      params[:user_signup_form][:email],
       password:   params[:user_signup_form][:password],
       password_confirmation: params[:user_signup_form][:password_confirmation],
+      phone:      params[:user_signup_form][:phone],
       avatar:     params[:user_signup_form][:avatar]
     )
     @user.save
@@ -23,7 +24,7 @@ class RegistrationsController < ApplicationController
     address.user = @user
     address.save
     sign_in @user
-    redirect_to new_profile_path(current_user), notice: "Welcome aboard! Set up your public profile now."
+    redirect_to new_profile_path(current_user), notice: "Welcome aboard, #{current_user.first_name}! Set up your public profile now."
   end
 
   # def after_sign_up_path_for(resource)
