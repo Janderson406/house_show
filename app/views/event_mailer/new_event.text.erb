@@ -1,0 +1,10 @@
+You have recieved a new event request from <%= @user.first_name%> <%= @user.last_name%>
+
+Event Information:
+
+<%= @event.title %>
+<%= @event.date %>
+<%= @event.description %>
+
+<%= link_to "View this artist's profile page", profile_url(@profile) %>
+<%= link_to "Accept or Decline the event invitation", event_url(@event) %>
