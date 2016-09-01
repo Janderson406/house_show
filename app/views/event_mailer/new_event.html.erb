@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>You have recieved a new event request from <%= @user.first_name%> <%= @user.last_name%></h1>
+
+    <h3>Event Information:</h3>
+
+    <p>
+      <%= @event.title %><br>
+      <%= @event.date %><br>
+      <%= @event.description %><br>
+    </p>
+    <p>
+      <%= link_to "View this artist's profile page", profile_url(@profile) %><br>
+      <%= link_to "Accept or Decline the event invitation", event_url(@event) %>
+    </p>
+  </body>
+</html>

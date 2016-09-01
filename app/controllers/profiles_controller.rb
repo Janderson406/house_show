@@ -8,16 +8,13 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
-    @user = User.find(params[:id])
+    @user = @profile.user
     @photos = @profile.photos.all
-
-
   end
 
   def new
     @profile = Profile.new
     @profile.user = current_user
-
   end
 
   def create

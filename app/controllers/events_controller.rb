@@ -26,6 +26,7 @@ class EventsController < ApplicationController
 	def create
 		@event = Event.new(events_params)
 		if @event.save
+      EventMailer.new_event(@user).deliver
       flash[:notice] = "New event was saved."
 			redirect_to @event
 		else

@@ -6,7 +6,8 @@
         <div class="span8">
             Email: <%= current_user.email %><br>
             Phone: <%= current_user.phone%><br>
-            Address:
+            Address: <%= current_user.address.street%><br>
+                    <%= current_user.address.city%> <%= current_user.address.state%> <%= current_user.address.zip%><br>
             <br>
         </div>
 
@@ -36,4 +37,4 @@ Pictures:
     <%= time_ago_in_words(photo.created_at) %> ago<br><br>
 <% end %><br>
 
-<%= link_to 'Edit Profile Page', edit_profile_path(current_user), class: 'btn btn-sm btn-warning'%> &nbsp&nbsp<%= link_to 'Add Venue Photos', new_profile_photo_path(current_user), class: 'btn btn-sm btn-success'%>
+<%= link_to 'Edit Profile Page', edit_profile_path(current_user), class: 'btn btn-sm btn-warning'%> &nbsp&nbsp<%= link_to 'Add Venue Photos', new_profile_photo_path(@profile), class: 'btn btn-sm btn-success'%>
