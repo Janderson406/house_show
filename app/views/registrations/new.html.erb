@@ -5,8 +5,13 @@
   <!-- insert radio buttons for  artist || host role?  -->
 
   <div class ="well">
-    <label class="radio-inline"><input type="radio" name="optradio">I am an artist looking to book my own events.</label><br>
-    <label class="radio-inline"><input type="radio" name="optradio">I am a home/small venue owner looking to host events.</label>
+      <p>Are you an artist or a home/venue host?</p>
+        <% @registerable_roles.each do |role| %>
+          <%= f.radio_button :role, role[0] %>
+          <%= f.label :role, "#{role[0]}" %>
+          <br />
+        <% end %>
+
   </div>
 
   <div class="field">
