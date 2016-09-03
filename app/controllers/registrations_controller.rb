@@ -1,6 +1,8 @@
 class RegistrationsController < ApplicationController
   def new
     @user_sign_up = UserSignupForm.new
+    @user_roles = User.roles
+    @registerable_roles = @user_roles.to_a[0..1]    #limit to only host or artist on form
   end
 
   def create
@@ -11,7 +13,8 @@ class RegistrationsController < ApplicationController
       password:   params[:user_signup_form][:password],
       password_confirmation: params[:user_signup_form][:password_confirmation],
       phone:      params[:user_signup_form][:phone],
-      avatar:     params[:user_signup_form][:avatar]
+      avatar:     params[:user_signup_form][:avatar],
+      role:       params[:user_signup_form][:role]
     )
     @user.save
 
