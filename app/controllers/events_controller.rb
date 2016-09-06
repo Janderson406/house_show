@@ -20,9 +20,14 @@ class EventsController < ApplicationController
   def my_events
     @user = current_user
     @events = Event.order("created_at DESC").find_by(user_id: current_user)
-    if @events = nil
-      flash.now[:alert] = "You have not scheduled any events yet."
-      redirect_to root_path
+    if @events.nil?
+      if @user.role = "host"
+        redirect_to root_path, alert: "You have no scheduled events. Click 'Find Artists' to set up an event."
+      elsif @user.role = "artist"
+        redirect_to root_path, alert: "You have no scheduled events. Click 'Find Hosts' to set up an event."
+      else
+        redirect_to root_path, alert: "You have no scheduled events."
+      end
     end
   end
 
