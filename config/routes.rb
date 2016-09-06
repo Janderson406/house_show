@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     # end
   end
 
-  #resources :photos
   resources :profiles, except: [:destroy] do
     resources :photos
   end

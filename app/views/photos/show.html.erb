@@ -1,8 +1,5 @@
-<h1>Photos#show</h1>
-<p>Find me in app/views/photos/show.html.erb</p>
-
 <h6><%= @photo.description %></h6>
 <%= image_tag @photo.image.url(:medium)%> <br><br>
 <!-- if belongs to current_user -->
 <%= link_to "Delete", profile_photo_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
-<%= link_to "Back", users_my_profile_path, class: "btn btn-sm btn-info" %>
+<%= link_to "Back", profile_path(@profile), class: "btn btn-sm btn-info" %>

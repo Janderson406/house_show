@@ -17,6 +17,10 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 	end
 
+  # def my_events
+  #   @events = Event.where(user_id: current_user)
+  # end
+
 	def new
     #if user role :artist or :admin
 		@event = Event.new
