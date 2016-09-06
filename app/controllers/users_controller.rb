@@ -15,14 +15,15 @@ class UsersController < ApplicationController
     if @user.profile.nil?
       redirect_to new_profile_path(@user)
     else
-
-
       @user = current_user
       @profile = current_user.profile
       @address = current_user.address
       @photos = @profile.photos
-      #Photo.where(:user_id => current_user)
     end
   end
+
+  # def my_events
+  #   @events = Event.where(user_id: current_user)
+  # end
 
 end
