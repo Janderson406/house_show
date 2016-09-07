@@ -7,8 +7,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    #@events = @user.events
   end
+
+  def artists
+    @users = User.artist.all
+  end
+
+  def hosts
+    @users = User.host.all
+  end
+
 
   def my_profile
     @user = current_user
@@ -21,9 +29,5 @@ class UsersController < ApplicationController
       @photos = @profile.photos
     end
   end
-
-  # def my_events
-  #   @events = Event.where(user_id: current_user)
-  # end
 
 end

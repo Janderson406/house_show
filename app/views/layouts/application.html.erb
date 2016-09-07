@@ -30,10 +30,10 @@
         <li><%= link_to "My Profile", users_my_profile_path %></li>
         <li><%= link_to "My Events", events_my_events_path%></li> <!-- events that belong to Users -->
         <!-- define user role and Link to either: Find Host or Find Artist -->
-        <li><%= link_to events_path, class: "btn btn-primary" do %>
+        <li><%= link_to users_hosts_path, class: "btn btn-primary" do %>
             <span class="glyphicon glyphicon-home"></span> Find Hosts
             <% end %></li>
-        <li><%= link_to events_path, class: "btn btn-primary" do %>
+        <li><%= link_to users_artists_path, class: "btn btn-primary" do %>
             <span class="glyphicon glyphicon-music"></span> Find Artists
             <% end %></li>
       <% end %>
