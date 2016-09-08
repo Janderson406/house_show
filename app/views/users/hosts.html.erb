@@ -1,0 +1,7 @@
+
+<h1>Hosts</h1>
+  <% @users.each do |user|%>
+    <h5><%= image_tag user.avatar.url(:micro), class:"img-circle"%>&nbsp
+        <%= link_to user.first_name%> &nbsp&nbsp&nbsp<small><%=user.address.city%>, <%=user.address.state%></small>&nbsp&nbsp&nbsp<%= link_to "Request New Event", new_event_path, class: 'btn btn-sm btn-success' %></h5>
+
+  <%end%>

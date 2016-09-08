@@ -1,0 +1,13 @@
+<div class="col-xs-6">
+  <h1>My Events</h1>
+
+
+  <% @user.events.each do |event|%>
+    <h4><%= link_to event.title, event %></h4>
+    <%= event.date.to_datetime.strftime('%a %b %d %Y') %> &nbsp <p class="label label-default"><%= event.category.name%></p><br><br>
+    <%= raw truncate(event.description, :length => 100 ) %><br>
+    <small>Status: <%= event.status %></small>
+  <%end%>
+
+  <br><br>
+</div>

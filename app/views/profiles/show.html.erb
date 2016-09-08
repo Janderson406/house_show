@@ -1,8 +1,6 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<h3><%= link_to @user.first_name, @profile %></h3><br>
+<%= image_tag @user.avatar(:thumb), class: "img-circle"%></br>
 
-<%= link_to image_tag @user.avatar(:thumb), class: "img-circle"%>
-<%= link_to @user.first_name, @profile %><br>
 <%= @profile.bio %><br>
 <%= @profile.link %><br>
 

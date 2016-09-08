@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   devise_for :users  #, controllers: { registrations: "registrations" }
 
   get 'users/my_profile'
+  get 'users/hosts'
+  get 'users/artists'
+  get 'events/my_events'
   resources :users do  #, only: [:index, :show]
     #resources :events, only: [:new, :show]
     resources :addresses, except: [:destory]
@@ -12,7 +15,6 @@ Rails.application.routes.draw do
     # end
   end
 
-  #resources :photos
   resources :profiles, except: [:destroy] do
     resources :photos
   end

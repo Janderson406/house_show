@@ -30,10 +30,13 @@ class ProfilesController < ApplicationController
 
   def edit
     @profile = Profile.find(params[:id])
+    @photos = @profile.photos
+
   end
 
   def update
     @profile = Profile.find(params[:id])
+    @photos = @profile.photos
     if @profile.update(profile_params)
       flash[:notice] = "Profile listing was updated."
 			redirect_to users_my_profile_path

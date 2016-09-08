@@ -17,16 +17,32 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 	end
 
+  def my_events
+    @user = current_user
+    @events = Event.order("created_at DESC").find_by(user_id: current_user)
+    if @events.nil?
+      if @user.host?
+        redirect_to root_path, alert: "You have no scheduled events. Click 'Find Artists' to set up an event."
+      elsif @user.artist?
+        redirect_to root_path, alert: "You have no scheduled events. Click 'Find Hosts' to set up an event."
+      else
+        redirect_to root_path, alert: "You have no scheduled events."
+      end
+    end
+  end
+
 	def new
     #if user role :artist or :admin
 		@event = Event.new
     @categories = Category.all
+    @event.user = current_user
 	end
 
 	def create
 		@event = Event.new(events_params)
+    @event.user = current_user
 		if @event.save
-      EventMailer.new_event(@user).deliver
+      #EventMailer.new_event(@user).deliver
       flash[:notice] = "New event was saved."
 			redirect_to @event
 		else
