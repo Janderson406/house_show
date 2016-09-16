@@ -1,7 +1,7 @@
 <h3><%= link_to @user.first_name, @profile %></h3><br>
 <%= image_tag @user.avatar(:thumb), class: "img-circle"%></br>
 
-<%= @profile.bio %><br>
+<%= @profile.bio %><br><br>
 <%= @profile.link %><br>
 
 <% @photos.each do |photo| %>

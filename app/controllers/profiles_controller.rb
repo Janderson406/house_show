@@ -9,7 +9,7 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
     @user = @profile.user
-    @photos = @profile.photos.all
+    @photos = @profile.photos
   end
 
   def new
